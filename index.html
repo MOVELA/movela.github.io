@@ -1,32 +1,205 @@
 <html>
     <head>
-        <title>
-                拖延症基地 
-        </title>
-        <style>
-                
-                *{margin:0px; padding:0px;} /*这行是为了清除代码默认的样式，不用拷贝*/
-                
-                .botCenter{width:100%; height:35px; line-height:35px; background:#ccc; position:fixed; bottom:0px; left:0px; font-size:14px; color:#000; text-align:center;}
-                h1,h2,h3,h4,h5,h6{text-align:center;}
-                </style>
-                <script>
-                function jump()
-                {
-                    window.location="index2.html";
+            <meta charset="utf-8"> 
+            <title>拖延症基地</title>
+            <style type="text/css">
+                body{
+                    background-color: #DFDBE5;
+                    background-color: #000000;
+                    background-color: #030303;
+                    background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23ff9400' fill-opacity='0.55'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
                 }
-                </script>
+                .botCenter{
+                    width:100%; 
+                    height:35px; 
+                    line-height:35px; 
+                    background:darkorange; 
+                    position:fixed; 
+                    bottom:0px; 
+                    left:0px; 
+                    font-size:14px; 
+                    color:#000; 
+                    text-align:center;
+                    }
+                #tab{
+                    width: 500px;
+                    height: 150px;
+                    /*background:-webkit-gradient(linear,center top,center bottom,from(blue), to(white));*/
+                    /*background-image:url("test.png");/*css3设置渐变*/
+                    margin-bottom: 100px;
+                    float:right;
+                }
+                #aTime{
+                    color: #fff;
+                    text-align: center;
+                    line-height: 200px;
+                    float: left;
+                }
+                #Tradion{
+                    width: 100px;
+                    height: 100px;
+                    border: 2px solid #fff;
+                    border-radius: 100px;
+                    float: left;
+                    margin: 50px 50px;
+                }
+                #hours{
+                    width: 30px;
+                    height: 2px;
+                    margin:50px 50px;
+                    background: #fff;
+                    transform-origin: left bottom;
+                }
+                #minutes{
+                    width: 38px;
+                    height: 2px;
+                    background: #fff;
+                    margin:-50px 50px;
+                    transform-origin: left bottom;
+                    transform:rotate(0deg);
+                }
+                #seconds{
+                    width: 45px;
+                    height: 1px;
+                    background: #fff;
+                    margin:50px 50px;
+                    transform-origin: left bottom;
+                    transform:rotate(0deg);
+        
+                }
+                .tran{
+                    transform: rotate(-90deg);/*这里测试了一下旋转角*/
+                }
+                #dian{
+                    width:6px;
+                    height: 6px;
+                    border-radius: 6px;
+                    background: #fff;
+                    margin:-55px 46px;
+                }
+                #aDate,#week{
+                    color: #fff;
+                    padding-top: 50px;
+                }
+                h4{
+                    color:#fff;
+                    font-size: 50px;
+                    padding-left:150px;
+                    padding-top:100px;
+                    text-shadow:azure;
+                    font-family:"Microsoft YaHei";
+                
+                  
+                }
+                h5{
+                    color:#fff;
+                    font-size:30px;
+                    padding-left:100px;
+                    font-family:"Microsoft JhengHei";
+                }
+                #text1{
+                   width:600px;
+                   margin-left:200px; 
+                  
+                   
+                 
+                }
+            </style>
+            <script type="text/javascript">
+                window.onload=function(){
+                    function addzero(num){
+                        if(num>=10)
+                        {
+                            return ""+num;
+                        }
+                        else
+                        {
+                            return "0"+num;
+                        }
+                    }
+                    
+                    function times(){
+                        var date=new Date();
+                        var aTime=document.getElementById('aTime');
+                        var str= addzero(date.getHours())+":"+ addzero(date.getMinutes())+":"+ addzero(date.getSeconds());
+                        aTime.innerHTML=str;
+                    }
+                    setInterval(times,1000);
+                    times();
+                    function Ttranform(){
+                        var date=new Date();
+                        var hours=document.getElementById('hours');
+                        var minutes=document.getElementById('minutes');
+                        var seconds=document.getElementById('seconds');
+                        var num=date.getHours();
+                        var num2=date.getMinutes();
+                        var num3=date.getSeconds();
+                        hours.style.transform="rotate("+(num*30-90)+"deg)";
+                        minutes.style.transform="rotate("+(num2*6-90)+"deg)";
+                        seconds.style.transform="rotate("+(num3*6-90)+"deg)";
+
+        
+                    }
+                    function Adate(){
+                        var date=new Date();
+                        var aDate=document.getElementById("aDate");
+                        var week=document.getElementById('week');
+                        var weekList=["星期天","星期一","星期二","星期三","星期四","星期五","星期六"];
+                        var str= date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
+                        var westr=weekList[date.getDay()];
+                       // alert(westr);
+                        aDate.innerHTML=str;
+                        week.innerHTML=westr;   
+                    }
+                    Adate();
+                    setInterval(Ttranform,1000);
+                    Ttranform();
+                }
+            </script>
+           
     </head>
     <body>
-       <h1>你好！我是挪不动！</h1>
-       <h2>这是我的第一个网站！</h2>
-       <h3>你好你好！</h3>
-       <h4>这个网站叫“拖延症基地”</h4>
-       <h5>成功申请了一年后才想起来呵呵</h5>
-       <h6>你看底下是有备案号的↓↓↓↓</h6>
-        <div class="botCenter">
-                粤ICP备17057587号
-        </div>
-
+            <div id="tab" >
+                    <div id="Tradion" >
+                        <div id="hours" class="tran"></div>
+                        <div id="minutes" class="tran"></div>
+                        <div id="seconds" class="tran"></div>
+                        <div id="dian"></div>
+                        
+                    </div>
+                    
+                         <h1 id="aTime" ></h1>
+                         <h3 id="aDate"></h3>
+                         <h2 id="week"></h2>
+                   
+                   
+                </div>
+                <div id="text1">
+                 <h4>勇敢的如果<br></h4>
+                
+                <h5>曾经那个怎么推都推不走的人<br>
+                        已经完全离开<br>
+                        独留我一人突然开始慢慢回忆<br>
+                        回忆点点滴滴<br>
+                        青涩而美好的过往<br>
+                        就像一片片掉落的花瓣<br>
+                        真正懂得欣赏时<br>
+                        已经无法挽回<br>
+                        我常常想<br>
+                        如果当初不那么自卑<br>
+                        如果当初勇敢一点<br>
+                        是否能和你一生相依<br>
+                        是否不会越走越远<br>
+                        如果再次相遇<br>
+                        我会大方站在你的面前<br>
+                        和你说声好久不见<br>
+                        但我知道<br>
+                        最勇敢的自己永远活在如果里<br>
+                        不管多后悔都再也不能回去<br></h5>   
+                </div>
+                
+                <div class="botCenter">
+                        粤ICP备17057587号
+                </div>
     </body>
 </html>
